@@ -34,4 +34,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // 通过setting.gradle 配置的 includeBuild 可以引用到composingLibrary的aar
+    implementation 'me.xiba.lib:composinglibrary:1.0'
 }

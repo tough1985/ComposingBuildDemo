@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 29
@@ -23,6 +24,10 @@ android {
         }
     }
 }
+
+// 配置group和version 使项目可以用本地依赖的方式通过group + 项目名称 + version的方式进行依赖
+group "me.xiba.lib"
+version "1.0"
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
