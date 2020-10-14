@@ -1,0 +1,3 @@
+include ':composinglibrary'
+include ':app'
+rootProject.name = "ComposingBuildLibrary"
