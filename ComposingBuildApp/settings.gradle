@@ -2,4 +2,4 @@ include ':app'
 rootProject.name = "ComposingBuildApp"
 
 // 通过includeBuild可以引用到ComposingBuildLibrary项目，参数是ComposingBuildLibrary与当前项目的相对路径
-includeBuild("../ComposingBuildLibrary")
+//includeBuild("../ComposingBuildLibrary")
