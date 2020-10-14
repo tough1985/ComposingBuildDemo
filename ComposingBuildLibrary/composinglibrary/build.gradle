@@ -29,6 +29,23 @@ android {
 group "me.xiba.lib"
 version "1.0"
 
+// 配置项目上传Maven的相关信息
+uploadArchives {
+    repositories.mavenDeployer {
+        // 本地仓库路径，项目根目录下的 repo 的文件夹为例
+        repository(url: uri('../../repo'))
+
+        // groupId
+        pom.groupId = 'me.xiba.lib'
+
+        // artifactId 为了与本地依赖区别，添加Maven后缀
+        pom.artifactId = 'composinglibraryMaven'
+
+        // 版本号
+        pom.version = '1.0'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
