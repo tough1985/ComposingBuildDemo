@@ -1,0 +1,2 @@
+# ComposingBuildDemo
+演示如何动态切换本地依赖与远程依赖
