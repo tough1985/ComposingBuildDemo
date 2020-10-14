@@ -2,4 +2,9 @@ include ':app'
 rootProject.name = "ComposingBuildApp"
 
 // 通过includeBuild可以引用到ComposingBuildLibrary项目，参数是ComposingBuildLibrary与当前项目的相对路径
-//includeBuild("../ComposingBuildLibrary")
+// with project为"ComposingBuildLibrary"中的"composinglibrary"项目
+includeBuild("../ComposingBuildLibrary") {
+    dependencySubstitution {
+        substitute module('me.xiba.lib:composinglibraryMaven') with project(':composinglibrary')
+    }
+}
