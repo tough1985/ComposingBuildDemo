@@ -13,7 +13,7 @@ echo "########## 开始提交 ##########"
 echo "commitMessage: $1"
 
 git add -A
-git status
+#git status
 
 
 
