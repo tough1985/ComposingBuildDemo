@@ -13,17 +13,16 @@ echo "########## 开始提交 ##########"
 echo "commitMessage: $1"
 
 git add -A
-#git status
+statusResult=`git status`
 
 
+if [[ $statusResult == *"nothing to commit"* ]]
+then
+  echo "########## 没有需要提交的内容 ##########"
+  exit 1
+fi
 
-#if [[ $? == *"nothing to commit"* ]]
-#then
-#  echo "########## 没有需要提交的内容 ##########"
-#  exit 1
-#fi
-
-#echo "########## 请输入提交信息 ##########"
+echo "########## 请输入提交信息 ##########"
 
 git commit -m "$1"
 
