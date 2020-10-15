@@ -26,7 +26,7 @@ fi
 
 echo "########## 请输入提交信息 ##########"
 
-git commit -m '`$1`'
+git commit -m '$1'
 
 if [ $? -ne 0 ]
 then
