@@ -15,7 +15,9 @@ echo "commitMessage: $1"
 git add -A
 git status
 
-if [[ $? == *"nothing to commit"* ]]
+
+
+if [[ "$?" == *"nothing to commit"* ]]
 then
   echo "########## 没有需要提交的内容 ##########"
   exit 1
