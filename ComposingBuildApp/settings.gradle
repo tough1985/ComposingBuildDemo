@@ -1,10 +1,26 @@
 include ':app'
 rootProject.name = "ComposingBuildApp"
+apply from: "composingConfig.gradle"
 
-// 通过includeBuild可以引用到ComposingBuildLibrary项目，参数是ComposingBuildLibrary与当前项目的相对路径
-// with project为"ComposingBuildLibrary"中的"composinglibrary"项目
-includeBuild("../ComposingBuildLibrary") {
-    dependencySubstitution {
-        substitute module('me.xiba.lib:composinglibraryMaven') with project(':composinglibrary')
+//// 通过includeBuild可以引用到ComposingBuildLibrary项目，参数是ComposingBuildLibrary与当前项目的相对路径
+//// with project为"ComposingBuildLibrary"中的"composinglibrary"项目
+//includeBuild("../ComposingBuildLibrary") {
+//    dependencySubstitution {
+//        substitute module('me.xiba.lib:composinglibraryMaven') with project(':composinglibrary')
+//    }
+//}
+
+// 遍历composing_dependencies中的所有配置
+ext.getProperty("composing_dependencies").each { projectConfig ->
+
+    // 如果是本地依赖
+    if (projectConfig["isLocal"]){
+
+        // 使用本地依赖进行替换
+        includeBuild(projectConfig["projectPath"]) {
+            dependencySubstitution {
+                substitute module(projectConfig["projectMaven"]) with project(projectConfig["projectName"])
+            }
+        }
     }
 }
