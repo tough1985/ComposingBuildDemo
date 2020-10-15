@@ -17,7 +17,7 @@ git status
 
 
 
-if [[ "$?" == *"nothing to commit"* ]]
+if [[ $? == *"nothing to commit"* ]]
 then
   echo "########## 没有需要提交的内容 ##########"
   exit 1
@@ -32,26 +32,26 @@ then
   echo "git commit 错误"
   exit 1
 fi
-
-git fetch
-if [ $? -ne 0 ]
-then
-  echo "git fetch 错误"
-  exit 1
-fi
-
-git rebase
-if [ $? -ne 0 ]
-then
-  echo "git rebase 错误"
-  exit 1
-fi
-
-git push -u origin
-if [ $? -ne 0 ]
-then
-  echo "git push 错误"
-  exit 1
-fi
+#
+#git fetch
+#if [ $? -ne 0 ]
+#then
+#  echo "git fetch 错误"
+#  exit 1
+#fi
+#
+#git rebase
+#if [ $? -ne 0 ]
+#then
+#  echo "git rebase 错误"
+#  exit 1
+#fi
+#
+#git push -u origin
+#if [ $? -ne 0 ]
+#then
+#  echo "git push 错误"
+#  exit 1
+#fi
 
 echo "########## 提交结束 ##########"
