@@ -1,5 +1,7 @@
 include ':app'
 rootProject.name = "ComposingBuildApp"
+
+// 引入composing的设置
 apply from: "composingConfig.gradle"
 
 //// 通过includeBuild可以引用到ComposingBuildLibrary项目，参数是ComposingBuildLibrary与当前项目的相对路径
