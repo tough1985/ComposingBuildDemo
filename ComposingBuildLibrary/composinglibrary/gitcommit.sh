@@ -15,7 +15,11 @@ echo "commitMessage: $1"
 git add -A
 git status
 
-echo $?
+if [[ $? == *"nothing to commit"* ]]
+then
+  echo "########## 没有需要提交的内容 ##########"
+  exit 1
+fi
 
 #echo "########## 请输入提交信息 ##########"
 
