@@ -67,6 +67,16 @@ task gitcommit(type: Exec){
     }
 }
 
+Task uploadTask = project.tasks.getByName("uploadArchives")
+
+// 如果用depensOn，那么uploadArchives每次执行前都会先执行gitcommit，无法独立运行
+uploadTask.dependsOn(gitcommit)
+
+// 如果想要uploadArchives更加独立，也可以使用shouldRunAfter，这样提交和上传两个task完全是独立的
+// 但是如果同时执行两个task的时候，uploadArchives会在commit任务执行完成之后执行。
+// 在终端输入 ./gradlew gitcommit uploadArchives
+uploadTask.mustRunAfter(gitcommit)
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
