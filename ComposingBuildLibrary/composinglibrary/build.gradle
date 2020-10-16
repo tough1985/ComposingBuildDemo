@@ -53,8 +53,13 @@ task gitcommit(type: Exec){
 
     doFirst {
         println "gitpush task running"
+
+        // 读取配置文件
+        def composingProperties = new Properties()
+        composingProperties.load(new FileInputStream(file("./gitcommit.properties")))
+
         // 执行gitcommit.sh脚本
-        commandLine("bash", "../gitcommit.sh", "commitMessage")
+        commandLine("bash", "../gitcommit.sh", composingProperties.get("commitMessage"))
     }
 
     doLast(){
