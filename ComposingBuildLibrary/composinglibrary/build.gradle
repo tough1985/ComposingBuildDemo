@@ -46,6 +46,22 @@ uploadArchives {
     }
 }
 
+// 自动提交代码的task
+task gitcommit(type: Exec){
+
+    description("git push task")
+
+    doFirst {
+        println "gitpush task running"
+        // 执行gitcommit.sh脚本
+        commandLine("bash", "../gitcommit.sh", "commitMessage")
+    }
+
+    doLast(){
+        println("gitpush task done")
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
