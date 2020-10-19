@@ -1,0 +1,51 @@
+subprojects {
+    apply plugin: "groovy"
+    apply plugin: 'java-gradle-plugin'
+    apply plugin: 'kotlin'
+
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+
+    dependencies {
+        implementation localGroovy()
+        implementation gradleApi()
+
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+        implementation 'com.android.tools.build:gradle:4.0.1'
+
+    }
+
+    rootProject.dependencies {
+        runtime project(path)
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly gradleApi()
+    compileOnly localGroovy()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
